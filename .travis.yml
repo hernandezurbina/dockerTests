@@ -3,6 +3,9 @@ sudo: required
 services:
   - docker
 
+before_script:
+  - sudo service mysql stop
+  
 script:
   - docker-compose up -d --build
   - docker ps
