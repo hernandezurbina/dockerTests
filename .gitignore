@@ -1,0 +1,3 @@
+myapp/myapp/settings_secret.py
+tests_env/*
+db/db-dump/dbuser.sql

@@ -1,0 +1,15 @@
+version: '3'
+
+services:
+  db:
+    build:
+      context: ./db
+    ports:
+      - "3306:3306"
+  web:
+    build:
+      context: ./myapp
+    ports:
+      - "80:80"
+    depends_on:
+      - db
