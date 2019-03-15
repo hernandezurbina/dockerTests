@@ -1,0 +1,72 @@
+[
+  {
+    "symbol": "female",
+    "date": "2012",
+    "price": 18
+  },
+  {
+    "symbol": "female",
+    "date": "2013",
+    "price": 8
+  },
+  {
+    "symbol": "female",
+    "date": "2014",
+    "price": 8
+  },
+  {
+    "symbol": "female",
+    "date": "2015",
+    "price": 14
+  },
+  {
+    "symbol": "female",
+    "date": "2016",
+    "price": 12
+  },
+  {
+    "symbol": "female",
+    "date": "2017",
+    "price": 19
+  },
+  {
+    "symbol": "female",
+    "date": "2018",
+    "price": 24
+  },
+  {
+    "symbol": "male",
+    "date": "2012",
+    "price": 51
+  },
+  {
+    "symbol": "male",
+    "date": "2013",
+    "price": 56
+  },
+  {
+    "symbol": "male",
+    "date": "2014",
+    "price": 54
+  },
+  {
+    "symbol": "male",
+    "date": "2015",
+    "price": 68
+  },
+  {
+    "symbol": "male",
+    "date": "2016",
+    "price": 74
+  },
+  {
+    "symbol": "male",
+    "date": "2017",
+    "price": 66
+  },
+  {
+    "symbol": "male",
+    "date": "2018",
+    "price": 118
+  }
+]

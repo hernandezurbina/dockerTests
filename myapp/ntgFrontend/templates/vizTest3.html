@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<script src="http://d3js.org/d3.v2.min.js?2.9.3"></script>
+<!-- <script src="d3/d3.js"></script> -->
+<!-- <script src="https://d3js.org/d3.v4.min.js"></script> -->
+<style>
+
+.link {
+  stroke: #aaa;
+}
+
+.node text {
+stroke:#333;
+cursos:pointer;
+}
+
+.node circle{
+stroke:#fff;
+stroke-width:3px;
+fill:#555;
+}
+
+</style>
+
+<script type='text/javascript'>
+var geodata = {{ geodata|safe }};
+</script>
+
+<body>
+<script>
+
+// var width = 960,
+//     height = 500
+var graphData = {{ graph|safe }};
+
+
+var width = window.innerWidth,
+    height = window.innerHeight
+
+var force = d3.layout.force()
+    .gravity(.05)
+    .distance(100)
+    .charge(-500)
+    .size([width, height]);
+
+var svg = d3.select("body").append("svg")
+    .attr("width", width)
+    .attr("height", height);
+    force
+        .nodes(graphData.nodes)
+        .links(graphData.links)
+        .start();
+
+    var link = svg.selectAll(".link")
+        .data(graphData.links)
+        .enter().append("line")
+        .attr("class", "link")
+        .style("stroke-width", function(d) { return Math.sqrt(d.weight); });
+
+    var node = svg.selectAll(".node")
+        .data(graphData.nodes)
+        .enter().append("g")
+        .attr("class", "node")
+        .call(force.drag);
+
+    node.append("circle")
+        .attr("r","5");
+
+    node.append("text")
+        .attr("dx", 12)
+        .attr("dy", ".35em")
+        .text(function(d) { return d.id });
+
+    force.on("tick", function() {
+      link.attr("x1", function(d) { return d.source.x; })
+          .attr("y1", function(d) { return d.source.y; })
+          .attr("x2", function(d) { return d.target.x; })
+          .attr("y2", function(d) { return d.target.y; });
+
+      node.attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; });
+    });
+
+
+
+
+window.addEventListener('resize', function(){
+  var width = window.innerWidth;
+  var height = window.innerHeight;
+  svg.attr("width", width);
+  svg.attr("height", height);
+  force.size([width, height]);
+  force.start();
+});
+
+
+</script>

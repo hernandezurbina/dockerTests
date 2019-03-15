@@ -2,4 +2,8 @@ tests_env/*
 */.DS_Store
 .DS_Store
 *.ipynb
-
+db/db-dump/13032019.sql
+myapp/static/*
+myapp/myapp/settings_secret.py
+db/db-dump/dbuser.sql
+myapp/ntgApp/*

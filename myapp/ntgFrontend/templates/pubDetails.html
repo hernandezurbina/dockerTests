@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>NTG</title>
+	<meta charset="utf-8" />
+	{% load staticfiles %}
+	<link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" type = "text/css"/>
+
+	<meta name="viewport" content = "width=device-width, initial-scale=1.0">
+
+	<style type="text/css">
+		html,
+		body {
+	  	height: 100%;
+	  	margin: 0
+		}
+
+		.box {
+	  	display: flex;
+	  	height: 100%;
+		}
+
+		.block {
+	  	height: -webkit-calc(100vh - 72px);
+	  	height: -moz-calc(100vh - 72px);
+	  	height: calc(100vh - 72px);
+	  	/*background-color: rgba(90,90,190,0.8);*/
+		}
+	</style>
+
+</head>
+
+<body>
+	<div class="container-fluid">
+		<h5><a href="/">Return to search</a></h5>
+		{% if id_publication %}
+			<h1>{% if publicationDetails.3 %}{{ publicationDetails.3 }}:{% endif %} {{ publicationDetails.0 }}</h1>
+			<h4>
+			{% for key, affiliations in authorAffiliations.items %}
+				{{ key }}
+					{% for affiliation in affiliations %}
+						<small>{{affiliation}}{% if not forloop.last %},{% endif %}</small>
+					{% endfor %}
+					<br>
+			{% endfor %}
+			</h4>
+			<h5>{{ publicationDetails.2 }}</h5>
+			<h4>{{ publicationDetails.1 }}</h4>
+			<h5><strong>keywords: </strong>
+				{% for keyword in keywords %}
+					{{ keyword.0 }}{% if not forloop.last %},{% endif %}
+				{% endfor %}
+			</h5>
+		{% endif %}
+	</div>
+</body>
+
+</html>
